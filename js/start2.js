@@ -16,7 +16,8 @@ function creatdiv(classname) {
 function move(speed) {
     const con = document.querySelector('.con');
     const confirstchild = con.firstElementChild;
-    con.style.top = con.offsetTop + speed + 'px';
+    let speednow = speed + Math.floor(score / 10);
+    con.style.top = con.offsetTop + speednow + 'px';
     if (con.offsetTop >= 0) {
         con.style.top = con.offsetTop - 180 + 'px';
         if (confirstchild) {
@@ -75,6 +76,10 @@ function rannum(min, max) {
 
 
 function judge(value) {
+    if (startflag === 0) {
+        alert('游戏还没有开始');
+        return
+    }
     const black = blackarr.shift();
     const blackdiv = blackdivarr.shift();
     if (value !== black) {
