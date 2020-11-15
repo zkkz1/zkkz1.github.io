@@ -13,7 +13,7 @@ let startflag = 0; //1 开始 0 为开始
 
 //调整屏幕
 (function changescreen() {
-    let a = window.screen.width / 1560;
+    let a = window.screen.width / 1650;
     document.body.style.zoom = a;
 })();
 
