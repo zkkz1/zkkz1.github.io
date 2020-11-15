@@ -13,10 +13,34 @@ body {
 .score {
     text-align: center;
     font-size: 30px;
-    line-height: 500px;
+    line-height: 300px;
+}
+
+.count-down {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: darkcyan;
+    text-align: center;
+    transition: .5s all ease-in-out
+}
+
+.count-down span {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 50px auto;
+    font-family: sans-serif;
+    line-height: 100px;
+    color: azure;
+    font-size: 50px;
+    font-weight: bold
 }
 
 .tip {
+    line-height: 100pz;
     text-align: center;
 }
 

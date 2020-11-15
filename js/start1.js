@@ -1,9 +1,28 @@
 "use strict";
-const startmain = document.querySelector('.main');
-const scoreshow = document.querySelector('.score')
+const startmain = document.querySelector('.con');
+const scoreshow = document.querySelector('.score');
+const span = document.querySelector('#cntspan');
+const countdown = document.querySelector(".count-down");
+var counterDown; //定时器
 
 var blocknumall = [];
-let score = 0
+let score = 0;
+let counter = 50;
+let startflag = 0; //1 开始 0 为开始
+
+function cntdown() {
+    if (counter !== 0) {
+        counter -= 1;
+        span.innerHTML = counter;
+        if (counter === 10) {
+            countdown.style.backgroundColor = "orange"
+        } else if (counter === 5) {
+            countdown.style.backgroundColor = "red";
+        }
+    } else {
+        over();
+    }
+}
 
 function creatfirst(boxnum) {
     const rownew = document.createElement('div');
@@ -48,8 +67,6 @@ function move() {
             rowall[i].remove()
         }
     }
-    // rowall.style.top = rowall.offsetTop + 50 + 'px';
-    // console.log(123);
 
 }
 
@@ -63,12 +80,19 @@ function rannum(min, max, num) {
 }
 
 function init() {
+    if (startflag === 0) {
+        startflag = 1;
+    } else {
+        alert('游戏已经开始了');
+        return
+    }
     score = 0;
     scoreshow.innerHTML = '你的分数为：' + score;
     creatfirst(4);
     move();
     move();
     move();
+    counterDown = setInterval(cntdown, 1000);
 }
 
 function judge(e) {
@@ -83,8 +107,6 @@ function judge(e) {
             move();
         } else {
             over();
-            blocknumall = [];
-            init();
         }
     }
     if (e == 'd') {
@@ -99,16 +121,24 @@ function judge(e) {
     if (e == 'k') {
         judge1(3);
     }
+    if (e == ' ') {
+        init();
+    }
 }
 
 function over() {
-    alert('你的分数为' + score)
+    alert('你的分数为' + score);
+    startflag = 0;
+    blocknumall = [];
+    score = 0;
+    scoreshow.innerHTML = '你的分数为：' + score;
+    counter = 50;
+    span.innerHTML = counter;
+    startmain.innerHTML = '';
+    countdown.style.backgroundColor = "darkcyan";
+    clearInterval(counterDown);
+
 }
 document.addEventListener('keypress', function(e) {
     judge(e.key);
 })
-init();
-
-
-
-// setInterval(move, 30);
