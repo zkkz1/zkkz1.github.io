@@ -10,6 +10,13 @@ let score = 0;
 let counter = 50;
 let startflag = 0; //1 开始 0 为开始
 
+
+//调整屏幕
+(function changescreen() {
+    let a = window.screen.width / 1520;
+    document.body.style.zoom = a;
+})();
+
 function cntdown() {
     if (counter !== 0) {
         counter -= 1;
