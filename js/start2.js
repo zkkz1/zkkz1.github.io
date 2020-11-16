@@ -7,6 +7,12 @@ let score = 0
 var timer;
 let startflag = 0; //1表示开始
 
+
+(function changescreen() {
+    let a = window.screen.width / 1650;
+    document.body.style.zoom = a;
+})();
+
 function creatdiv(classname) {
     const newdiv = document.createElement('div');
     newdiv.className = classname;
